@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { TodoList } from './components/TodoList';
+import { TodosFilter } from './components/TodosFilter';
+import { TodosProvider } from './components/TodosContext';
+import { TodoApp } from './components/TodoApp';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+const App: React.FC = () => (
+  <TodosProvider>
+    <section className="todoapp">
+      <header className="header">
+        <h1>todos</h1>
+
+        <TodoApp />
       </header>
-    </div>
-  );
-}
+
+      <section className="main">
+        <TodoList />
+      </section>
+
+      <TodosFilter />
+    </section>
+  </TodosProvider>
+);
 
 export default App;
